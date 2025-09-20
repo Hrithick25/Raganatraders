@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ragana Traders - Contact Us</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #1a4d32;
+      --secondary: #7cb563;
+      --white: #fff;
+      --dark-footer-bg: #0e140f;
+      --shadow: rgba(124,181,99,0.3);
+    }
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5fbf4;
+      color: var(--primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      background: var(--primary);
+      padding: 1rem 2rem;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-family: 'Crimson Text', serif;
+      color: var(--white);
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .logo img {
+      height: 44px;
+      margin-right: 12px;
+    }
+    nav a {
+      color: var(--white);
+      font-weight: 600;
+      font-size: 1rem;
+      margin-left: 2rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    nav a.active,
+    nav a:hover {
+      color: var(--secondary);
+    }
+    nav a.active::after,
+    nav a:hover::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 2.5px;
+      background: var(--secondary);
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      border-radius: 2px;
+    }
+    main {
+      max-width: 800px;
+      margin: 4rem auto 4rem;
+      padding: 0 1rem;
+      user-select: none;
+    }
+    main h1 {
+      font-family: 'Crimson Text', serif;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    main p {
+      font-weight: 400;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #506c50;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      text-align: center;
+    }
+    .contact-links {
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .contact-links a {
+      color: var(--secondary);
+      display: inline-block;
+      margin: 0 1.2rem;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      transition: color 0.3s ease;
+    }
+    .contact-links a:hover {
+      color: #1a4d32;
+    }
+    footer {
+      background: var(--dark-footer-bg);
+      color: #a2b595;
+      text-align: center;
+      padding: 3.5rem 1.5rem 2rem;
+      font-size: 0.95rem;
+      letter-spacing: 0.4px;
+    }
+    footer a {
+      color: #c8d4b6;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    footer a:hover {
+      color: var(--secondary);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" onclick="location.href='main.html'">
+      <img src="logo.png" alt="Ragana Traders Logo"/>
+      Ragana Traders
+    </div>
+    <nav>
+      <a href="main.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html" class="active">Contact</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Contact Us</h1>
+    <p>Feel free to reach out to our team with any inquiries, orders or feedback.</p>
+    <div class="contact-links">
+      <a href="mailto:sales.team@raganatraders.in"><i class="fas fa-envelope"></i> sales.team@raganatraders.in</a>
+      <a href="mailto:Director@raganatraders.in"><i class="fas fa-envelope"></i> Director@raganatraders.in</a>
+    </div>
+  </main>
+  <footer>
+    <p>© 2024 Ragana Traders. Reach our sales team at <a href="mailto:sales.team@raganatraders.in">sales.team@raganatraders.in</a></p>
+  </footer>
+  <script>
+    function slideUp() {
+      document.querySelectorAll('.fade-slide-up').forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+          el.classList.add('visible');
+        }
+      });
+    }
+    window.addEventListener('scroll', slideUp);
+    window.addEventListener('load', slideUp);
+  </script>
+</body>
+</html>
