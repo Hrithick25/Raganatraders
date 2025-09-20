@@ -1695,9 +1695,7 @@
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <div class="hero-circle"></div>
-                        <div class="hero-circle"></div>
-                        <div class="hero-circle"></div>
+                        <!-- Removed hero-circle effects for desktop background image -->
                     </div>
                 </div>
             </div>
@@ -1921,9 +1919,10 @@
     <!-- Contact Page with Integrated Map -->
     <section id="contact" class="page-section">
         <div class="page-header">
-            <div class="container">
+            <div class="container" style="margin-bottom: 0.5rem;">
                 <h1>Connect With Us</h1>
-                <p>Get in touch for inquiries, custom solutions, and business opportunities</p>
+                <p>Thank you for your interest in contacting us. We value your feedback, inquiries, and suggestions. 
+                     </p>
             </div>
         </div>
         <div class="container">
@@ -1943,10 +1942,9 @@
                             <select name="product" required>
                                 <option value="">Select Product Interest</option>
                                 <option value="coco-peat">Coco Peat Blocks</option>
-                                <option value="coco-chips">Coco Chips</option>
-                                <option value="coconut-fiber">Coconut Fiber</option>
-                                <option value="organic-solutions">Organic Solutions</option>
-                                <option value="custom-solutions">Custom Solutions</option>
+                                <option value="coco-chips">Charcoal</option>
+                                <option value="coconut-fiber">VermiCompost</option>
+                                
                             </select>
                         </div>
                         <div class="form-group">
@@ -2014,17 +2012,18 @@
                             <i class="fas fa-building"></i>
                             <div>
                                 <h4>Office</h4>
-                                <p>329/11A, Palayamkottai Road<br>Ramraj Cotton Complex<br>Tuticorin - 628002, Tamil Nadu</p>
+                                <p>
+                                    <strong>Building No./Flat No.:</strong> 4A/423<br>
+                                    <strong>Road/Street:</strong> MACHADO NAGAR<br>
+                                    <strong>Locality/Sub Locality:</strong> THOOTHUKUDI<br>
+                                    <strong>City/Town/Village:</strong> Thoothukudi<br>
+                                    <strong>District:</strong> Thoothukudi<br>
+                                    <strong>State:</strong> Tamil Nadu<br>
+                                    <strong>PIN Code:</strong> 628002
+                                </p>
                             </div>
                         </div>
-                        <div class="address-item">
-                            <i class="fas fa-directions"></i>
-                            <div>
-                                <h4>Directions</h4>
-                                <p>Located in Tuticorin's industrial area, easily accessible by road and rail transport.</p>
-                            </div>
-                        </div>
-                    </div>
+                        
                     
                     <div class="map-container">
                         <iframe 
@@ -2189,40 +2188,47 @@
                 lastScrollTop = scrollTop;
             });
 
-            // Form handling
+            // Form handling - use mailto to open user's email client and prefill message
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
                 contactForm.addEventListener('submit', function(e) {
                     e.preventDefault();
-                    
-                    const submitBtn = this.querySelector('button[type="submit"]');
-                    const originalText = submitBtn.innerHTML;
-                    
-                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-                    submitBtn.disabled = true;
-                    
-                    setTimeout(() => {
-                        submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
-                        submitBtn.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
-                        
-                        setTimeout(() => {
-                            submitBtn.innerHTML = originalText;
-                            submitBtn.disabled = false;
-                            submitBtn.style.background = '';
-                            this.reset();
-                            alert('Thank you for your message! We will get back to you within 24 hours.');
-                        }, 2000);
-                    }, 1500);
+
+                    const form = this;
+                    const formData = new FormData(form);
+                    const name = formData.get('name') || '';
+                    const email = formData.get('email') || '';
+                    const phone = formData.get('phone') || '';
+                    const product = formData.get('product') || '';
+                    const message = formData.get('message') || '';
+
+                    const subject = encodeURIComponent(`New Inquiry from ${name || email || 'Website Visitor'}`);
+
+                    const bodyLines = [
+                        `Name: ${name}`,
+                        `Email: ${email}`,
+                        `Phone: ${phone}`,
+                        `Product Interest: ${product}`,
+                        '',
+                        `Message:`,
+                        `${message}`
+                    ];
+
+                    const body = encodeURIComponent(bodyLines.join('\n'));
+                    const mailto = `mailto:sales.team@raganatraders.in?subject=${subject}&body=${body}`;
+
+                    // Open the user's mail client with the prefilled message
+                    window.location.href = mailto;
                 });
             }
 
             // Chat widget functionality
-            const chatWidget = document.getElementById('chatWidget');
-            if (chatWidget) {
-               chatWidget.addEventListener('click', function() {
-               window.location.href = "mailto:director@raganatraders.in";
+                const chatWidget = document.getElementById('chatWidget');
+                if (chatWidget) {
+                    chatWidget.addEventListener('click', function() {
+                    window.location.href = "mailto:sales.team@raganatraders.in";
 });
-            }
+                }
 
             // Performance optimization
             const imageObserver = new IntersectionObserver((entries, observer) => {
