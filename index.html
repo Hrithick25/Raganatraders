@@ -1580,6 +1580,28 @@
             }
         }
 
+        /* Tighter contact spacing for small tablets and phones */
+        @media (max-width: 1024px) {
+            /* stronger overrides to remove gaps */
+            .page-header { padding: 28px 0 8px !important; margin-bottom: 8px !important; }
+            .contact-form { padding: 0.9rem !important; border-radius: 12px; }
+            .contact-content { gap: 0.6rem !important; }
+            .map-section { margin-top: 0; }
+            .hero { min-height: auto !important; padding-top: 10px !important; padding-bottom: 6px !important; }
+            .about-content { gap: 1rem !important; padding-top: 6px !important; padding-bottom: 6px !important; }
+            .container { padding-left: 12px !important; padding-right: 12px !important; }
+        }
+
+        @media (max-width: 480px) {
+            /* aggressive mobile compaction */
+            .page-header { padding: 18px 0 6px !important; margin-bottom: 6px !important; }
+            .contact-form { padding: 0.75rem !important; border-radius: 10px; }
+            .contact-content { gap: 0.4rem !important; grid-template-columns: 1fr; }
+            .map-container { height: 180px; }
+            .hero-title { font-size: 1.6rem !important; margin-bottom: 6px; }
+            .hero-description { font-size: 0.95rem !important; margin-bottom: 8px; }
+        }
+
         /* Tablets (481px - 768px) */
         @media (min-width: 481px) and (max-width: 768px) {
             .menu-toggle {
@@ -1814,7 +1836,7 @@
         <div class="page-header">
             <div class="container">
                 <h1>About Ragana Traders</h1>
-                <p>Where innovation meets sustainability in agriculture and horticulture</p>
+                <p>Cultivating growth through premium organic solutions</p>
             </div>
         </div>
         <div class="container">
@@ -1863,7 +1885,7 @@
         <div class="page-header">
             <div class="container">
                 <h1>Our Premium Products</h1>
-                <p>High-quality coconut by-products for diverse agricultural and horticultural applications</p>
+                <p>Superior natural substrates for diverse agricultural and horticultural applications</p>
             </div>
         </div>
         <div class="container">
