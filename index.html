@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ragana Traders </title>
-    <link rel="icon" type="image/png" href="logo2.png">
+    <link rel="icon" type="image/png" href="logo.png">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -102,7 +102,8 @@
         /* Page Sections */
         .page-section {
             display: none;
-            min-height: 100vh;
+            /* allow sections to size naturally to avoid large empty gaps */
+            min-height: auto;
         }
 
         .page-section.active {
@@ -315,7 +316,59 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 400px;
+            height: 480px;
+        }
+
+        /* Hero gallery (right-side images) */
+        .hero-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-items: flex-end;
+            width: 100%;
+            position: relative;
+            padding: 20px;
+        }
+
+        .hero-gallery img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 8px solid rgba(255,255,255,0.95);
+            transition: all 0.4s ease;
+            transform: translateZ(0);
+        }
+
+        .hero-gallery img:nth-child(1) {
+            transform: translateX(-30px) translateY(20px) scale(0.85);
+        }
+
+        .hero-gallery img:nth-child(2) {
+            transform: translateX(30px) scale(0.9);
+        }
+
+        .hero-gallery img:nth-child(3) {
+            transform: translateX(-20px) translateY(-20px) scale(0.98);
+        }
+
+        /* Remove hover enlargement for a cleaner desktop experience */
+        .hero-gallery img:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Slide-up entrance animation for hero images */
+        .slide-up {
+            transform: translateY(30px) scale(0.98);
+            opacity: 0;
+            transition: transform 0.7s cubic-bezier(.2,.9,.2,1), opacity 0.6s ease;
+        }
+
+        .slide-up.in-view {
+            transform: translateY(0) scale(1);
+            opacity: 1;
         }
 
         .hero-circle {
@@ -338,6 +391,55 @@
             width: 100px;
             height: 100px;
             opacity: 0.2;
+        }
+
+        /* Responsive: stack hero columns on small screens */
+        @media (max-width: 900px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-visual {
+                height: auto;
+                padding: 20px 0 40px;
+            }
+
+            .hero-gallery {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .hero-gallery img {
+                width: calc(50% - 15px);
+                height: 160px;
+                transform: none !important;
+            }
+
+            .hero-gallery img:hover {
+                transform: translateY(-5px) !important;
+            }
+        }
+
+        /* testimonials removed */
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .testimonial-card { min-height: 150px; padding: 1.2rem; }
+            .container { padding-left: 12px; padding-right: 12px; }
+            .hero { padding-bottom: 1rem; }
+        }
+
+        @media (max-width: 768px) {
+            .testimonial-card { padding: 0.9rem; min-height: 140px; }
+            .section-title { font-size: 1.6rem; margin-bottom: 1rem; }
+            .container { padding-left: 10px; padding-right: 10px; }
+            .hero { padding-top: 40px; padding-bottom: 10px; }
+            .hero-title { font-size: 1.6rem; }
+            .hero-description { font-size: 0.98rem; }
         }
 
         /* Page Header */
@@ -1682,7 +1784,7 @@
                 <div class="hero-container">
                     <div class="hero-content">
                         <h1 class="hero-title">Premium Agricultural Products for Global Markets</h1>
-                        <p class="hero-description">We're the leader in coco by-products, specializing in manufacturing, packaging, and globally shipping sustainable coconut-based solutions for agriculture and horticulture worldwide.</p>
+                        <p class="hero-description">We're a leader in sustainable agricultural products, specializing in manufacturing, packaging, and globally shipping eco-friendly solutions for agriculture and horticulture worldwide. Our expertise centers on creating premium organic materials that enhance crop growth and soil health.</p>
                         <div class="hero-buttons">
                             <a onclick="showPage('products')" class="btn btn-primary">
                                 <i class="fas fa-seedling"></i>
@@ -1695,7 +1797,12 @@
                         </div>
                     </div>
                     <div class="hero-visual">
-                        <!-- Removed hero-circle effects for desktop background image -->
+                        <!-- Right-side sustainability gallery -->
+                        <div class="hero-gallery" aria-hidden="false">
+                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=80" alt="Sustainable Agriculture" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?w=800&auto=format&fit=crop&q=80" alt="Organic Farming" loading="lazy">
+                            <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop&q=80" alt="Eco-friendly Products" loading="lazy">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1713,15 +1820,17 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-text">
-                    <h3>We're Leader in Coco By-Products</h3>
-                    <p>Welcome to Ragana Traders, where innovation meets sustainability in agriculture and horticulture. As a pioneering force in the industry, we are committed to maximising the potential of natural resources, promoting reusability, and delivering unparalleled products through relentless research and development.</p>
+                    <h3>Pioneering Excellence in Agricultural Growing Solutions
+
+</h3>
+                    <p>Welcome to Ragana Traders, where scientific innovation drives sustainable agricultural solutions. Founded on the principle of maximizing natural resource potential, we specialize in manufacturing and distributing three core products that define modern sustainable farming: Coco Peat, Premium Charcoal, and Vermicompost.</p>
                     
                     <div class="about-features">
                         <div class="feature-item">
                             <i class="fas fa-leaf"></i>
                             <div>
                                 <h4>Eco-Friendly Products</h4>
-                                <p>Sustainable coconut by-products including coco peat, coco chips, and organic solutions that promote environmental responsibility</p>
+                                <p>Sustainable eco friendlyproducts including coco peat,Premium Charcoal, and Vermicompost that promote environmental responsibility</p>
                             </div>
                         </div>
                         <div class="feature-item">
@@ -1742,7 +1851,7 @@
                 </div>
                 <div class="about-visual">
                     <div class="visual-card">
-                        <i class="fas fa-seedling"></i>
+                        <img src="vermi2.jpg" alt="Vermicompost" style="width:100%;height:100%;object-fit:cover;border-radius:12px;box-shadow:var(--shadow);">
                     </div>
                 </div>
             </div>
@@ -1807,13 +1916,13 @@
                         <div class="swiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src=char.webp alt="Coco Chips" loading="lazy">
+                                    <img src="char1.jpg" alt="Coco Chips" loading="lazy">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src= char1.jpg alt="Coco Chips Detail" loading="lazy">
+                                    <img src= "char.webp" alt="Coco Chips Detail" loading="lazy">
                                 </div>
                                 <div class="swiper-slide">
-                                    <img src= char3.jpg alt="Coco Chips Application" loading="lazy">
+                                    <img src= "char3.jpg" alt="Coco Chips Application" loading="lazy">
                                 </div>
                             </div>
                             <div class="swiper-pagination"></div>
@@ -1889,14 +1998,33 @@
                 </div>
 
                <div class="product-card">
-    <!-- Removed product-slider and all slider images -->
-    <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=500&h=300&fit=crop" alt="Organic Solutions" loading="lazy" style="width:100%;height:250px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow);margin-bottom:1rem;">
+     <div class="product-card">
+                    <div class="product-slider">
+                        <div class="swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <img src= "coco.jpg" alt="Coconut Fiber" loading="lazy">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="vermi.jpg" alt="Coconut Fiber Detail" loading="lazy">
+                                </div>
+                                <div class="swiper-slide">
+                                    <img src="char.webp" alt="Coconut Fiber Application" loading="lazy">
+                                </div>
+                            </div>
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+    
     <div class="product-content">
         <div class="product-icon">
             <i class="fas fa-recycle"></i>
         </div>
         <h3>Organic Solutions</h3>
-        <p>Eco-friendly organic fertilizers and soil amendments derived from coconut by-products for sustainable farming and gardening practices.</p>
+        <p>Eco-friendly organic fertilizers and soil amendments made from premium natural materials for sustainable farming and gardening practices.</p>
+
         <div class="product-features">
             <div class="feature-item">
                 <i class="fas fa-leaf"></i>
@@ -1914,6 +2042,8 @@
         <a onclick="showPage('contact')" class="btn btn-primary">Get Quote</a>
     </div>
 </div>
+
+                <!-- testimonials removed per user request -->
     </section>
 
     <!-- Contact Page with Integrated Map -->
@@ -2064,9 +2194,8 @@
                     <h4>Our Products</h4>
                     <ul>
                         <li><a onclick="showPage('products')">Coco Peat Blocks</a></li>
-                        <li><a onclick="showPage('products')">Coco Chips</a></li>
+                        <li><a onclick="showPage('products')">Charcoal</a></li>
                         <li><a onclick="showPage('products')">VermiCompost</a></li>
-                        <li><a onclick="showPage('products')">Organic Solutions</a></li>
                     
                     </ul>
                 </div>
@@ -2150,6 +2279,23 @@
                         crossFade: true
                     },
                 });
+            });
+
+            // testimonials have been removed
+
+            // Slide-up animation for hero gallery images using IntersectionObserver
+            const heroImages = document.querySelectorAll('.hero-gallery img');
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            heroImages.forEach(img => {
+                img.classList.add('slide-up');
+                io.observe(img);
             });
 
             // Mobile Navigation
