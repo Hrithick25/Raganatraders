@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
+   
     <style>
         * {
             margin: 0;
@@ -88,7 +88,7 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-    
+   
 @keyframes logoRotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -1471,6 +1471,9 @@
                 text-align: center;
             }
 
+            /* prevent header overlap pushing content off-screen */
+            .page-section { overflow: visible; }
+
             .hero-title {
                 font-size: 2rem;
                 line-height: 1.3;
@@ -1774,7 +1777,7 @@
                     </div>
                     <span class="logo-text">Ragana Traders</span>
                 </div>
-                
+               
                 <ul class="nav-menu">
                     <li><a onclick="showPage('home')" class="nav-link active">
                         <i class="fas fa-home"></i> Home
@@ -1789,7 +1792,7 @@
                         <i class="fas fa-phone"></i> Contact
                     </a></li>
                 </ul>
-                
+               
                 <div class="menu-toggle">
                     <span></span>
                     <span></span>
@@ -1821,9 +1824,9 @@
                     <div class="hero-visual">
                         <!-- Right-side sustainability gallery -->
                         <div class="hero-gallery" aria-hidden="false">
-                            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&auto=format&fit=crop&q=80" alt="Sustainable Agriculture" loading="lazy">
-                            <img src="https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?w=800&auto=format&fit=crop&q=80" alt="Organic Farming" loading="lazy">
-                            <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=800&auto=format&fit=crop&q=80" alt="Eco-friendly Products" loading="lazy">
+                            <img src="coco3.jpg" alt="Sustainable Agriculture" loading="lazy">
+                            <img src="char1.jpg" alt="Organic Farming" loading="lazy">
+                            <img src="vermi.jpg" alt="Eco-friendly Products" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -1846,7 +1849,7 @@
 
 </h3>
                     <p>Welcome to Ragana Traders, where scientific innovation drives sustainable agricultural solutions. Founded on the principle of maximizing natural resource potential, we specialize in manufacturing and distributing three core products that define modern sustainable farming: Coco Peat, Premium Charcoal, and Vermicompost.</p>
-                    
+                   
                     <div class="about-features">
                         <div class="feature-item">
                             <i class="fas fa-leaf"></i>
@@ -2039,30 +2042,8 @@
                             <div class="swiper-button-prev"></div>
                         </div>
                     </div>
-    
-    <div class="product-content">
-        <div class="product-icon">
-            <i class="fas fa-recycle"></i>
-        </div>
-        <h3>Organic Solutions</h3>
-        <p>Eco-friendly organic fertilizers and soil amendments made from premium natural materials for sustainable farming and gardening practices.</p>
-
-        <div class="product-features">
-            <div class="feature-item">
-                <i class="fas fa-leaf"></i>
-                <span>100% organic</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-heart"></i>
-                <span>Eco-friendly</span>
-            </div>
-            <div class="feature-item">
-                <i class="fas fa-chart-line"></i>
-                <span>Improves soil health</span>
-            </div>
-        </div>
-        <a onclick="showPage('contact')" class="btn btn-primary">Get Quote</a>
-    </div>
+   
+   
 </div>
 
                 <!-- testimonials removed per user request -->
@@ -2073,14 +2054,14 @@
         <div class="page-header">
             <div class="container" style="margin-bottom: 0.5rem;">
                 <h1>Connect With Us</h1>
-                <p>Thank you for your interest in contacting us. We value your feedback, inquiries, and suggestions. 
+                <p>Thank you for your interest in contacting us. We value your feedback, inquiries, and suggestions.
                      </p>
             </div>
         </div>
         <div class="container">
             <div class="contact-content">
                 <div class="contact-form">
-                    <form id="contactForm">
+                    <form id="contactForm" action="https://formspree.io/f/mzzjpzky" method="POST">
                         <div class="form-group">
                             <input type="text" name="name" placeholder="Your Full Name" required>
                         </div>
@@ -2093,22 +2074,23 @@
                         <div class="form-group">
                             <select name="product" required>
                                 <option value="">Select Product Interest</option>
-                                <option value="coco-peat">Coco Peat Blocks</option>
-                                <option value="coco-chips">Charcoal</option>
-                                <option value="coconut-fiber">VermiCompost</option>
-                                
+                                <option value="Coco Peat Blocks">Coco Peat Blocks</option>
+                                <option value="Charcoal">Charcoal</option>
+                                <option value="VermiCompost">VermiCompost</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <textarea name="message" placeholder="Your Message or Requirements" rows="4" required></textarea>
                         </div>
+                        <input type="hidden" name="_replyto" value="sales.team@raganatraders.in">
+                        <input type="hidden" name="_subject" value="New Contact Form Submission - Ragana Traders">
                         <button type="submit" class="btn btn-primary">
                             <i class="fas fa-paper-plane"></i>
                             Send Message
                         </button>
                     </form>
                 </div>
-                
+               
                 <div class="contact-info">
                     <div class="info-card">
                         <h3>
@@ -2131,7 +2113,7 @@
                             <i class="fas fa-globe"></i>
                             <span>www.raganatraders.in</span>
                         </div>
-                        
+                       
                     </div>
                     <div class="info-card">
                         <h3>
@@ -2146,7 +2128,7 @@
                             <i class="fas fa-shipping-fast"></i>
                             <span>International Shipping</span>
                         </div>
-                        
+                       
                         <div class="contact-item">
                             <i class="fas fa-cog"></i>
                             <span>Custom Solutions</span>
@@ -2175,13 +2157,13 @@
                                 </p>
                             </div>
                         </div>
-                        
-                    
+                       
+                   
                     <div class="map-container">
-                        <iframe 
+                        <iframe
                             class="map-iframe"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3938.9043!2d78.1348!3d8.7642!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b03ef6b6b1f3c57%3A0x8c4e9c4d9f3e2b1a!2sTuticorin%2C%20Tamil%20Nadu%2C%20India!5e0!3m2!1sen!2sus!4v1642678901234!5m2!1sen!2sus"
-                            loading="lazy" 
+                            loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade">
                         </iframe>
                     </div>
@@ -2218,7 +2200,7 @@
                         <li><a onclick="showPage('products')">Coco Peat Blocks</a></li>
                         <li><a onclick="showPage('products')">Charcoal</a></li>
                         <li><a onclick="showPage('products')">VermiCompost</a></li>
-                    
+                   
                     </ul>
                 </div>
             </div>
@@ -2323,7 +2305,7 @@
             // Mobile Navigation
             const menuToggle = document.querySelector('.menu-toggle');
             const navMenu = document.querySelector('.nav-menu');
-            
+           
             menuToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navMenu.classList.toggle('active');
@@ -2341,10 +2323,10 @@
             // Header scroll effect
             const header = document.querySelector('.header');
             let lastScrollTop = 0;
-            
+           
             window.addEventListener('scroll', function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                
+               
                 if (scrollTop > 100) {
                     header.style.background = 'rgba(255, 255, 255, 0.98)';
                     header.style.boxShadow = '0 4px 30px rgba(0,0,0,0.1)';
@@ -2352,41 +2334,44 @@
                     header.style.background = 'rgba(255, 255, 255, 0.98)';
                     header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.08)';
                 }
-                
+               
                 lastScrollTop = scrollTop;
             });
 
-            // Form handling - use mailto to open user's email client and prefill message
+            // Ensure page sections are offset below the fixed header on small screens
+            function adjustSectionSpacing() {
+                const headerEl = document.querySelector('.header');
+                if (!headerEl) return;
+                const headerH = headerEl.offsetHeight || 70;
+                const sections = document.querySelectorAll('.page-section');
+                // Apply padding-top equal to header height for small devices where header overlaps
+                if (window.innerWidth <= 1024) {
+                    sections.forEach(sec => {
+                        sec.style.paddingTop = headerH + 'px';
+                    });
+                } else {
+                    sections.forEach(sec => {
+                        sec.style.paddingTop = '';
+                    });
+                }
+            }
+
+            // Run on load and when viewport changes
+            adjustSectionSpacing();
+            window.addEventListener('resize', adjustSectionSpacing);
+            window.addEventListener('orientationchange', adjustSectionSpacing);
+
+            // Form handling with Formspree
             const contactForm = document.getElementById('contactForm');
             if (contactForm) {
+                const statusMessage = document.createElement('div');
+                statusMessage.className = 'status-message';
+                contactForm.appendChild(statusMessage);
+
                 contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-
-                    const form = this;
-                    const formData = new FormData(form);
-                    const name = formData.get('name') || '';
-                    const email = formData.get('email') || '';
-                    const phone = formData.get('phone') || '';
-                    const product = formData.get('product') || '';
-                    const message = formData.get('message') || '';
-
-                    const subject = encodeURIComponent(`New Inquiry from ${name || email || 'Website Visitor'}`);
-
-                    const bodyLines = [
-                        `Name: ${name}`,
-                        `Email: ${email}`,
-                        `Phone: ${phone}`,
-                        `Product Interest: ${product}`,
-                        '',
-                        `Message:`,
-                        `${message}`
-                    ];
-
-                    const body = encodeURIComponent(bodyLines.join('\n'));
-                    const mailto = `mailto:sales.team@raganatraders.in?subject=${subject}&body=${body}`;
-
-                    // Open the user's mail client with the prefilled message
-                    window.location.href = mailto;
+                    const submitButton = this.querySelector('button[type="submit"]');
+                    submitButton.disabled = true;
+                    statusMessage.style.display = 'none';
                 });
             }
 
@@ -2438,7 +2423,7 @@
             if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
                 const navMenu = document.querySelector('.nav-menu');
                 const menuToggle = document.querySelector('.menu-toggle');
-                
+               
                 if (deltaX > 0 && navMenu.classList.contains('active')) {
                     menuToggle.classList.remove('active');
                     navMenu.classList.remove('active');
