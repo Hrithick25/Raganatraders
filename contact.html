@@ -101,6 +101,7 @@
       text-align: center;
       font-size: 1.2rem;
       color: var(--primary);
+      margin-bottom: 3rem;
     }
     .contact-links a {
       color: var(--secondary);
@@ -131,21 +132,193 @@
     footer a:hover {
       color: var(--secondary);
     }
+    
+    /* Form styling from task */
+    .container {
+        max-width: 500px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+
+    .header {
+        background: linear-gradient(135deg, #4a7c59 0%, #5d8b6a 100%);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+    }
+
+    .form-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+
+    .logo-icon {
+        width: 40px;
+        height: 40px;
+        background: white;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        color: #4a7c59;
+        font-size: 20px;
+    }
+
+    .company-name {
+        font-size: 24px;
+        font-weight: 600;
+    }
+
+    .subtitle {
+        opacity: 0.9;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .form-container {
+        padding: 40px 30px;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #333;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 15px;
+        border: 2px solid #e1e5e9;
+        border-radius: 8px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background-color: #fafafa;
+    }
+
+    .form-control:focus {
+        outline: none;
+        border-color: #4a7c59;
+        background-color: white;
+        box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+    }
+
+    select.form-control {
+        cursor: pointer;
+    }
+
+    textarea.form-control {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .send-btn {
+        width: 100%;
+        padding: 18px;
+        background: linear-gradient(135deg, #4a7c59 0%, #5d8b6a 100%);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .send-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(74, 124, 89, 0.3);
+    }
+
+    .send-btn:active {
+        transform: translateY(0);
+    }
+
+    .send-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+    }
+
+    .spinner {
+        display: none;
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255,255,255,0.3);
+        border-radius: 50%;
+        border-top-color: white;
+        animation: spin 1s ease-in-out infinite;
+        margin-right: 10px;
+    }
+
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+
+    .status-message {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 8px;
+        font-weight: 500;
+        text-align: center;
+        display: none;
+    }
+
+    .status-success {
+        background-color: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+    .status-error {
+        background-color: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+    }
+
+    .required {
+        color: #dc3545;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            margin: 0;
+            border-radius: 0;
+        }
+        
+        .form-container {
+            padding: 30px 20px;
+        }
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo" onclick="location.href='main.html'">
+    <div class="logo" onclick="location.href='index.html'">
       <img src="logo.png" alt="Ragana Traders Logo"/>
       Ragana Traders
     </div>
     <nav>
-      <a href="main.html">Home</a>
+      <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
-      <a href="products.html">Products</a>
+      <a href="product.html">Products</a>
       <a href="contact.html" class="active">Contact</a>
     </nav>
   </header>
+  
   <main>
     <h1>Contact Us</h1>
     <p>Feel free to reach out to our team with any inquiries, orders or feedback.</p>
@@ -153,10 +326,60 @@
       <a href="mailto:sales.team@raganatraders.in"><i class="fas fa-envelope"></i> sales.team@raganatraders.in</a>
       <a href="mailto:Director@raganatraders.in"><i class="fas fa-envelope"></i> Director@raganatraders.in</a>
     </div>
+    
+    <div class="container">
+      <div class="header">
+        <div class="form-logo">
+          <div class="logo-icon">R</div>
+          <div class="company-name">Ragana Traders</div>
+        </div>
+        <div class="subtitle">Send us a message</div>
+      </div>
+      
+      <div class="form-container">
+        <!-- Formspree form integration -->
+        <form id="contactForm" action="https://formspree.io/sales.team@raganatraders.in" method="POST">
+          <div class="form-group">
+            <label for="name">Your Name <span class="required">*</span></label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Your Email <span class="required">*</span></label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Subject <span class="required">*</span></label>
+            <input type="text" class="form-control" id="subject" name="subject" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message <span class="required">*</span></label>
+            <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+          </div>
+          
+          <button type="submit" class="send-btn" id="submitButton">
+            <span class="spinner" id="submitSpinner"></span>
+            Send Message
+          </button>
+        </form>
+        
+        <div id="statusSuccess" class="status-message status-success">
+          Thank you! Your message has been sent successfully.
+        </div>
+        
+        <div id="statusError" class="status-message status-error">
+          Oops! Something went wrong. Please try again later.
+        </div>
+      </div>
+    </div>
   </main>
+  
   <footer>
     <p>© 2024 Ragana Traders. Reach our sales team at <a href="mailto:sales.team@raganatraders.in">sales.team@raganatraders.in</a></p>
   </footer>
+  
   <script>
     function slideUp() {
       document.querySelectorAll('.fade-slide-up').forEach(el => {
@@ -167,6 +390,56 @@
     }
     window.addEventListener('scroll', slideUp);
     window.addEventListener('load', slideUp);
+    
+    // Formspree form handling
+    document.addEventListener('DOMContentLoaded', function() {
+      const form = document.getElementById('contactForm');
+      const submitButton = document.getElementById('submitButton');
+      const submitSpinner = document.getElementById('submitSpinner');
+      const successMessage = document.getElementById('statusSuccess');
+      const errorMessage = document.getElementById('statusError');
+      
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Show loading state
+        submitButton.disabled = true;
+        submitSpinner.style.display = 'inline-block';
+        successMessage.style.display = 'none';
+        errorMessage.style.display = 'none';
+        
+        // Get form data
+        const formData = new FormData(form);
+        
+        // Send form data to Formspree
+        fetch(form.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+          // Show success message
+          submitButton.disabled = false;
+          submitSpinner.style.display = 'none';
+          successMessage.style.display = 'block';
+          form.reset();
+        })
+        .catch(error => {
+          // Show error message
+          submitButton.disabled = false;
+          submitSpinner.style.display = 'none';
+          errorMessage.style.display = 'block';
+        });
+      });
+    });
   </script>
 </body>
 </html>
